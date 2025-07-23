@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Vue CDN -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <title>Vanilla html with vue cdn</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{message}}</h1>
+    </div>
+  </body>
+  <script>
+    const { createApp } = Vue
+
+    createApp({
+      setup() {
+        const message = 'Hello Oips'
+
+        return {
+          message,
+        }
+      },
+    }).mount('#app')
+  </script>
+</html>
