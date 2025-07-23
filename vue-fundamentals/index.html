@@ -10,18 +10,23 @@
   </head>
   <body>
     <div id="app">
-      <h1>{{message}}</h1>
+      <button @click="nextMessage">Next message</button>
+      <p v-show="display">{{message}}</p>
     </div>
   </body>
   <script>
-    const { createApp } = Vue
+    const { createApp, ref, reactive } = Vue
 
     createApp({
       setup() {
-        const message = 'Hello Oips'
+        const arr = reactive(['one', 'two', 'three'])
+        let message =''
+
+        const nextMessage = () => {}
 
         return {
-          message,
+            message,
+          nextMessage,
         }
       },
     }).mount('#app')
