@@ -10,8 +10,9 @@
   </head>
   <body>
     <div id="app">
-      <button @click="nextMessage">Next message</button>
-      <p v-show="display">{{message}}</p>
+      <ul>
+        <li v-for="(items) in arr" :key="i">{{items}}</li>
+      </ul>
     </div>
   </body>
   <script>
@@ -20,13 +21,9 @@
     createApp({
       setup() {
         const arr = reactive(['one', 'two', 'three'])
-        let message =''
-
-        const nextMessage = () => {}
 
         return {
-            message,
-          nextMessage,
+          arr,
         }
       },
     }).mount('#app')
