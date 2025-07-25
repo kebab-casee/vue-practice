@@ -10,18 +10,44 @@
   </head>
   <body>
     <div id="app">
-      <button @click="counter++">{{counter}}</button>
+      <ul>
+        <li
+          v-for="items in list"
+          :key="items.id"
+          :style="items.count > 0 ?getColor.green: items.count < 0 ? getColor.red : getColor.gray "
+        >
+          {{items.label}} {{items.count}}
+          <button @click="items.count++">+</button>
+          <button @click="items.count--">-</button>
+        </li>
+      </ul>
     </div>
   </body>
   <script>
-    const { createApp, ref, reactive } = Vue
-
+    const { ref, createApp, reactive } = Vue
     createApp({
       setup() {
-        const counter = ref(0)
+        const list = reactive([
+          { id: 1, label: 'Counter 1:', count: 0 },
+          { id: 2, label: 'Counter 2:', count: 0 },
+          { id: 3, label: 'Counter 3:', count: 0 },
+        ])
+
+        const getColor = {
+          green: {
+            backgroundColor: 'green',
+          },
+          red: {
+            backgroundColor: 'red',
+          },
+          gray: {
+            backgroundColor: 'gray',
+          },
+        }
 
         return {
-          counter,
+          list,
+          getColor,
         }
       },
     }).mount('#app')
