@@ -10,9 +10,7 @@
   </head>
   <body>
     <div id="app">
-      <ul>
-        <li v-for="(items) in arr" :key="i">{{items}}</li>
-      </ul>
+      <button @click="counter++">{{counter}}</button>
     </div>
   </body>
   <script>
@@ -20,10 +18,10 @@
 
     createApp({
       setup() {
-        const arr = reactive(['one', 'two', 'three'])
+        const counter = ref(0)
 
         return {
-          arr,
+          counter,
         }
       },
     }).mount('#app')
